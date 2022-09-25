@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: synechron-library-wordCounter
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+
+springdoc:
+  api-version: 1.0.0-SNAPSHOT
+  title: Synechron Word Counter
+  description: Counting word frequency
+
+
+server:
+  shutdown: graceful
+  port: ${SERVER_PORT:10004}
+  servlet:
+    context-path: /synechron-library-wordCounter
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, shutdown
+  health:
+    probes:
+      enabled: true
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
